@@ -1,7 +1,7 @@
-
 import csv
 import boto3
 import time
+
 
 def read_csv_batches(file_path, batch_size=10):
     # Read CSV file in batches of 10 rows
@@ -15,12 +15,6 @@ def read_csv_batches(file_path, batch_size=10):
                 batch = []
         if batch:
             yield batch
-
-#def send_to_kinesis(kinesis_client, stream_name, records):
-    # Send data to Kinesis stream 
- #   records = [{'Data': ','.join(record)} for record in records]
-  #  response = kinesis_client.put_records(StreamName=stream_name, Records=records)
-   # return response
 
 def send_to_kinesis(kinesis_client, stream_name, records):
     # Add PartitionKey to each record

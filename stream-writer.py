@@ -1,7 +1,16 @@
+import os
 import csv
 import boto3
 import time
+from dotenv import load_dotenv
 
+# Load environment variables from the .env file
+load_dotenv()
+
+# Read AWS credentials from environment variables
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_REGION = os.getenv("AWS_REGION")
 
 def read_csv_batches(file_path, batch_size=10):
     # Read CSV file in batches of 10 rows
@@ -29,16 +38,12 @@ def send_to_kinesis(kinesis_client, stream_name, records):
     return response
 
 def main():
-    # Set your AWS credentials and region
-    aws_access_key_id = 'AKxxxxxxUAL3FF62YF'
-    aws_secret_access_key = 'VLnGs9PvOxxxxxxGhP1'
-    aws_region = 'ap-south-1'
 
     # Set your Kinesis stream name
     stream_name = 'modelTestStream'
 
     # Create a Kinesis client
-    kinesis_client = boto3.client('kinesis', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, region_name=aws_region)
+    kinesis_client = boto3.client('kinesis', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, region_name=AWS_REGION)
 
     # Set the path to test data CSV file
     csv_file_path = 'path/file.csv'

@@ -3,11 +3,11 @@ import pandas as pd
 import pickle
 
 # Load the synthetic training data
-data = pd.read_csv("training_data.csv")
-labels = pd.read_csv("training_labels.csv")
+data = pd.read_csv("training_data_4.csv")
+labels = pd.read_csv("training_labels_4.csv")
 
 # Train Isolation Forest Model
-model = IsolationForest(n_estimators=100, contamination=0.05, random_state=42)
+model = IsolationForest(n_estimators=200, contamination=0.0475, random_state=42)
 model.fit(data)
 
 # Save the trained model

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # Generate synthetic anomaly data
-def generate_anomalous_data(num_rows=100000, num_features=10, anomaly_percentage=0.05):
+def generate_anomalous_data(num_rows=2000, num_features=4, anomaly_percentage=0.05):
     data = []
     labels = []
     
@@ -22,8 +22,8 @@ def generate_anomalous_data(num_rows=100000, num_features=10, anomaly_percentage
     df_labels = pd.DataFrame(labels, columns=["anomaly"])
 
     # Save as CSV files
-    df_data.to_csv("training_data.csv", index=False)
-    df_labels.to_csv("training_labels.csv", index=False)
+    df_data.to_csv("training_data_4.csv", index=False)
+    df_labels.to_csv("training_labels_4.csv", index=False)
 
 if __name__ == "__main__":
     generate_anomalous_data()
